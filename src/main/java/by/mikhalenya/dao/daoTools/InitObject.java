@@ -1,4 +1,4 @@
-package by.mikhalenya.dao.tollsDao;
+package by.mikhalenya.dao.daoTools;
 
 import java.sql.ResultSet;
 

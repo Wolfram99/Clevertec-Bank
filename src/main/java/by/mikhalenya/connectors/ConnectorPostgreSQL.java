@@ -13,7 +13,7 @@ public class ConnectorPostgreSQL implements ConnectionToDB{
     public Connection openDBConnection() {
         try {
             PropertiesConfiguration configuration = new PropertiesConfiguration("database.properties");
-            Class.forName("org.postgresql.Driver");
+            Class.forName(configuration.getString("driver"));
             System.out.println("**** Loaded the JDBC driver");
             Connection connection = DriverManager.getConnection( configuration.getString("url"),
                     configuration.getString("username"),

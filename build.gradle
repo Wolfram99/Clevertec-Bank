@@ -1,5 +1,17 @@
 plugins {
-    id 'java'
+    id 'war'
+
+}
+
+compileJava.options.encoding = 'UTF-8'
+javadoc.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+tasks.withType(JavaExec) {
+    jvmArgs = ['-Xmx2g']
 }
 
 group 'org.example'
@@ -12,12 +24,16 @@ repositories {
 dependencies {
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
     implementation group: 'commons-configuration', name: 'commons-configuration', version: '1.10'
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
 }
 
 test {
